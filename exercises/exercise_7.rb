@@ -18,6 +18,15 @@ end
 class Store < ActiveRecord::Base
   validates :name, length: { minimum: 3 }
   validates :annual_revenue, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validate :must_carry_one_apparel_type
+
+  def must_carry_one_apparel_type
+    if !mens_apparel && !womens_apparel
+      errors.add(:mens_apparel, "is absent. Stores must carry at least one of the men's or women's apparel")
+      errors.add(:womens_apparel, "is absent. Stores must carry at least one of the men's or women's apparel")
+    end
+  end
+
 end
 
 # 2
@@ -30,5 +39,7 @@ store_name = gets.chomp
 # 4
 if @new_store.invalid?
   puts "Failed to save store"
-  puts @new_store.errors.full_messages
+  @new_store.errors.full_messages.each do |message|
+    puts message
+  end
 end
