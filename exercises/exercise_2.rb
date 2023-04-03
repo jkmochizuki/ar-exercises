@@ -4,8 +4,13 @@ require_relative './exercise_1'
 puts "Exercise 2"
 puts "----------"
 
-store_1 = Store.find_by(id: 1)
+# 1
+store_1 = Store.find(1)
 @store1 = store_1
 
-store_2 = Store.find_by(id: 2)
+# 2
+store_2 = Store.find(2)
 @store2 = store_2
+
+# 3
+@store1.update(name: "Metrotown")
