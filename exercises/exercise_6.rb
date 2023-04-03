@@ -9,10 +9,8 @@ puts "Exercise 6"
 puts "----------"
 
 # 1
-Store.has_many :employees
-
 # 2
-Employee.belongs_to :store
+#/lib
 
 # 3
 @store1.employees.create(first_name: "Khurram", last_name: "Virani", hourly_rate: 80)
